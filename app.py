@@ -22,8 +22,14 @@ def create_dash_layout(app):
     
     # Body 
     body = html.Div([
-        dcc.Markdown(""" ## I'm ready to serve static files on Heroku. Just look at this! """), 
-        html.Br(), 
+        html.H3('Kent SeaTech Sales Report - '+fileTimestamp,
+                style={'display': 'inline',
+                       'float': 'left',
+                       'margin-left': '7px',
+                       'margin-top': '20px',
+                       'margin-bottom': '0'
+                       }
+                ),
         html.Img(src="http://kentseatech.com/wp-content/uploads/2016/08/Kenttesch-logo-retina.png",
                 style={
                     'margin-top': '20px',
@@ -31,7 +37,7 @@ def create_dash_layout(app):
                     'float': 'right'
                 },
         ),
-        html.Img(src='charlie.png')])
+    ],style={'width': '100%'})
 
     # Footer
     footer = html.Div([
