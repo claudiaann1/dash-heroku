@@ -22,7 +22,7 @@ def create_dash_layout(app):
     
     # Body 
     body = html.Div([
-        html.H3('Kent SeaTech Sales Report - '+fileTimestamp,
+        html.H3('Kent SeaTech Sales Report',
                 style={'display': 'inline',
                        'float': 'left',
                        'margin-left': '7px',
