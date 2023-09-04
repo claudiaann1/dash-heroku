@@ -21,10 +21,23 @@ def create_dash_layout(app):
     header = html.Div([html.Br(), dcc.Markdown(""" # Hi. I'm your Dash app."""), html.Br()])
     
     # Body 
-    body = html.Div([dcc.Markdown(""" ## I'm ready to serve static files on Heroku. Just look at this! """), html.Br(), html.Img(src='charlie.png')])
+    body = html.Div([
+        dcc.Markdown(""" ## I'm ready to serve static files on Heroku. Just look at this! """), 
+        html.Br(), 
+        html.Img(src="http://kentseatech.com/wp-content/uploads/2016/08/Kenttesch-logo-retina.png",
+                style={
+                    'margin-top': '20px',
+                    'height': '100px',
+                    'float': 'right'
+                },
+        ),
+        html.Img(src='charlie.png')])
 
     # Footer
-    footer = html.Div([html.Br(), html.Br(), dcc.Markdown(""" ### Built with ![Image](heart.png) in Python using [Dash](https://plotly.com/dash/)""")])
+    footer = html.Div([
+        html.Br(), 
+        html.Br(), 
+        dcc.Markdown(""" ### Built with ![Image](heart.png) in Python using [Dash](https://plotly.com/dash/)""")])
     
     # Assemble dash layout 
     app.layout = html.Div([header, body, footer])
