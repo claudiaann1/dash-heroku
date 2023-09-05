@@ -1,12 +1,31 @@
-from dash import Dash, callback, html, dcc
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Sep 26 14:40:17 2017
+
+@author: claudiahertzog
+"""
+
+from dash import Dash, dcc, html, Input, Output, callback
+import dash_auth
 import dash_bootstrap_components as dbc
 import numpy as np
 import pandas as pd
 import matplotlib as mpl
 import gunicorn                     #whilst your local machine's webserver doesn't need this, Heroku's linux webserver (i.e. dyno) does. I.e. This is your HTTP server
 
+# Keep this out of source code repository - save in a file or a database
+VALID_USERNAME_PASSWORD_PAIRS = {
+    'kstAdmin': 'fishF3rm!ng'
+}
+
 # Instantiate dash app
-app = Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
+app = Dash(__name__, external_stylesheets=[dbc.themes.SANDSTONE])
+auth = dash_auth.BasicAuth(
+    app,
+    VALID_USERNAME_PASSWORD_PAIRS
+)
+
 
 # Reference the underlying flask app (Used by gunicorn webserver in Heroku production deployment)
 server = app.server 
@@ -54,4 +73,4 @@ def create_dash_layout(app):
 create_dash_layout(app)
 
 # Run flask app
-if __name__ == "__main__": app.run_server(debug=False, host='0.0.0.0', port=8050)
+if __name__ == "__main__": app.run_server(debug=True)
